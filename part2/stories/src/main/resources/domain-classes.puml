@@ -1,0 +1,14 @@
+@startuml
+
+class Command
+class CommandHandler
+class Event
+class StatePersister
+class Reactor
+
+Command -down-> CommandHandler : handle
+CommandHandler -down-> Event : produces
+Event -down-> StatePersister : persisted by
+Event -right> Reactor : actioned by
+
+@enduml
