@@ -1,2 +1,2 @@
-# stories-event-driven-study-part-1
-This repo contains the code resulting from following the steps in [Event driven with Spring REST, Kafka and MongoDB - part 1](https://joaovicente.github.io/2018-02-22-event-driven-with-spring-rest-kafka-and-mongodb-part1/) blog
+# stories-event-driven-study
+This repo holds the code associated with the the [Event Driven Study with String REST, Kafka and MongoDN](https://joaovicente.github.io/2018-02-22-event-driven-with-spring-rest-kafka-and-mongodb-part1/) blog series
