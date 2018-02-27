@@ -1,14 +1,17 @@
 @startuml
 
-class Command
-class CommandHandler
+abstract class Command {
+    Event[] execute()
+}
+
 class Event
+class EventStore
 class StatePersister
 class Reactor
 
-Command -down-> CommandHandler : handle
-CommandHandler -down-> Event : produces
-Event -down-> StatePersister : persisted by
-Event -right> Reactor : actioned by
+Command -down-> Event : produces
+Event -down-> EventStore : flows into
+EventStore -down-> StatePersister : persists events\ncollected from
+EventStore -right> Reactor : reacts on events\ncollected from
 
 @enduml
