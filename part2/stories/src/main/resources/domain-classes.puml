@@ -4,14 +4,22 @@ abstract class Command {
     Event[] execute()
 }
 
-class Event
-class EventStore
-class StatePersister
-class Reactor
+abstract class Event
+abstract class EventStore   {
+    add(Event)
+}
+abstract StatePersister
+abstract class Reactor
 
-Command -down-> Event : produces
-Event -down-> EventStore : flows into
-EventStore -down-> StatePersister : persists events\ncollected from
-EventStore -right> Reactor : reacts on events\ncollected from
+class CommandHandler {
+    EventStore eventStore
+    {method} process(Command command)
+}
+
+Command -down- Event : produces >
+Event -down- EventStore : flows into >
+EventStore -down- StatePersister : persists events\n sourced from <
+EventStore -right> Reactor : reacts on events\n sourced from <
+
 
 @enduml
