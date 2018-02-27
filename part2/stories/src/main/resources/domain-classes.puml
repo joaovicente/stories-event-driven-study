@@ -6,7 +6,8 @@ abstract class Command {
 
 abstract class Event
 abstract class EventStore   {
-    add(Event)
+    add(Event event)
+    subscribe(Event event)
 }
 abstract StatePersister
 abstract class Reactor
@@ -18,8 +19,8 @@ class CommandHandler {
 
 Command -down- Event : produces >
 Event -down- EventStore : flows into >
-EventStore -down- StatePersister : persists events\n sourced from <
-EventStore -right> Reactor : reacts on events\n sourced from <
+EventStore -down- StatePersister : subscribes <
+EventStore -right- Reactor : subscribes <
 
 
 @enduml
