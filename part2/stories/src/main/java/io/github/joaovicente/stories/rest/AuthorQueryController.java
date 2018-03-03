@@ -1,5 +1,7 @@
-package io.github.joaovicente.stories;
+package io.github.joaovicente.stories.rest;
 
+import io.github.joaovicente.stories.persisters.Author;
+import io.github.joaovicente.stories.persisters.AuthorRepository;
 import lombok.extern.java.Log;
 
 import org.springframework.beans.factory.annotation.Autowired;

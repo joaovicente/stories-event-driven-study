@@ -1,4 +1,4 @@
-package io.github.joaovicente.stories;
+package io.github.joaovicente.stories.kafka;
 
 import java.util.HashMap;
 import java.util.Map;

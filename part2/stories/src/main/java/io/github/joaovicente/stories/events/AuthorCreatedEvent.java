@@ -1,4 +1,4 @@
-package io.github.joaovicente.stories;
+package io.github.joaovicente.stories.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorCreated {
+public class AuthorCreatedEvent {
     private final UUID id = UUID.randomUUID();
     private String name;
     private String email;

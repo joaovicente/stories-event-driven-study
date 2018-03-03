@@ -1,4 +1,4 @@
-package io.github.joaovicente.stories;
+package io.github.joaovicente.stories.rest;
 
 import lombok.Data;
 

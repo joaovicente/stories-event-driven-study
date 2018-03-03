@@ -1,8 +1,12 @@
-package io.github.joaovicente.stories;
+package io.github.joaovicente.stories.rest;
 
+import io.github.joaovicente.stories.commandhandlers.CreateAuthorCommandHandler;
+import io.github.joaovicente.stories.commands.CreateAuthorCommand;
+import io.github.joaovicente.stories.events.AuthorCreatedEvent;
 import lombok.extern.java.Log;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,19 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RestController
 public class CreateAuthorController {
     @Autowired
-    private KafkaTopicSender sender;
-    private final String authorCreatedTopic = "author-created";
-
+    CreateAuthorCommandHandler createAuthorCommandHandler;
     @RequestMapping(value = "/authors", method = RequestMethod.POST)
 
-    public AuthorCreated createAuthor(@RequestBody CreateAuthorDto dto) {
+    public AuthorCreatedEvent createAuthor(@RequestBody CreateAuthorDto dto) {
         log.info("create-author command received: " + dto.toString());
-        AuthorCreated authorCreated = AuthorCreated.builder()
+
+        CreateAuthorCommand cmd = CreateAuthorCommand.builder()
                 .name(dto.getName())
                 .email(dto.getEmail()).build();
-
-        sender.send(authorCreatedTopic, ((Object) authorCreated));
-        log.info("author-created event transmitted: " + authorCreated.toString());
-        return authorCreated;
+        AuthorCreatedEvent event = createAuthorCommandHandler.process(cmd);
+        return event;
     }
 }

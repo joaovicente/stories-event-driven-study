@@ -14,7 +14,7 @@ abstract class Reactor
 
 class CommandHandler {
     EventStore eventStore
-    {method} process(Command command)
+    {method} Event[] process(Command command)
 }
 
 Command -down- Event : produces >
