@@ -18,3 +18,5 @@ $ http post localhost:8080/authors name=me email=me@gmail.com
 ```
 
 Look at your trace in Jaeger http://localhost:16686
+
+> For more on Opentracing and Jaeger see [Opentracing Spring Web dependency](https://github.com/opentracing-contrib/java-spring-web#spring-boot-auto-configuration) and [Jaeger dependency](https://github.com/jaegertracing/jaeger-client-java#importing-dependencies) as well as [this video](https://youtu.be/RvCcWltMY7U)
